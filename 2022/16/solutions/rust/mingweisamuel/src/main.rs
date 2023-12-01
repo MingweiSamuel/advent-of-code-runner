@@ -146,7 +146,7 @@ pub fn main() {
     }
 
     let p1 = find_p1(size, &dists_new, start);
-    let p2 = find_p2(size, &dists_new, start);
+    let p2 = find_p2(size, &dists_new, start, p1);
 
     println!("{}\n{}", p1, p2);
 }
@@ -183,7 +183,7 @@ fn find_p1(size: usize, dists_new: &[[u32; SIZE]; SIZE], start: u32) -> u32 {
     best
 }
 
-fn find_p2(size: usize, dists_new: &[[u32; SIZE]; SIZE], start: u32) -> u32 {
+fn find_p2(size: usize, dists_new: &[[u32; SIZE]; SIZE], start: u32, best_possible: u32) -> u32 {
     let mut best = 0;
     let mut init = State {
         loc: start,
@@ -197,13 +197,15 @@ fn find_p2(size: usize, dists_new: &[[u32; SIZE]; SIZE], start: u32) -> u32 {
             best = state.released;
         }
         if !state.second {
-            stack.push(State {
-                visited: state.visited,
-                loc: start,
-                released: state.released,
-                time_used: 0,
-                second: true,
-            })
+            if best < best_possible + state.released {
+                stack.push(State {
+                    visited: state.visited,
+                    loc: start,
+                    released: state.released,
+                    time_used: 0,
+                    second: true,
+                });
+            }
         }
         stack.extend(
             (0..size)

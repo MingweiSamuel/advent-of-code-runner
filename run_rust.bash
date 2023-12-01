@@ -4,4 +4,4 @@
 set -eux
 
 INPUT=${3:-$1}
-cat "2022/$2/io/$INPUT.input" | cargo run --manifest-path "2022/$2/solutions/rust/$1/Cargo.toml"
+cat "2022/$2/io/$INPUT.input" | RUST_BACKTRACE=1 cargo run --manifest-path "2022/$2/solutions/rust/$1/Cargo.toml"
