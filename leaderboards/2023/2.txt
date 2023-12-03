@@ -1,8 +1,9 @@
 
 -- Day 2 --
 language   author          compile    total      average    status     
-Rust       FX              590ms      60ms       6ms        ✅
-Rust       thedrone7       527ms      60ms       5ms        ✅
-C++        querijn         1347ms     63ms       6ms        ✅
-NodeJS     stelar7         0ms        253ms      38ms       ✅
-Elixir     leastrio        0ms        2281ms     371ms      ✅
+Rust       mingweisamuel   528ms      69ms       5ms        ✅
+Rust       thedrone7       513ms      69ms       6ms        ✅
+Rust       FX              575ms      71ms       6ms        ✅
+C++        querijn         1348ms     72ms       6ms        ✅
+NodeJS     stelar7         0ms        292ms      39ms       ✅
+Elixir     leastrio        0ms        2671ms     384ms      ✅
