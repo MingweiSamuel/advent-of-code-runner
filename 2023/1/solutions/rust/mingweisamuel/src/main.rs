@@ -1,5 +1,5 @@
 use itertools::Itertools;
-use std::io::Read;
+use std::io::{BufReader, Read};
 
 #[allow(non_camel_case_types)]
 #[derive(PartialEq, Eq, PartialOrd, Ord, Hash, Clone, Copy)]
@@ -80,8 +80,7 @@ fn transition(state: State, b: u8) -> (u8, State) {
 }
 
 fn main() {
-    let (p1, p2) = std::io::stdin()
-        .lock()
+    let (p1, p2) = BufReader::with_capacity(16 * 1024, std::io::stdin().lock())
         .bytes()
         .map(Result::unwrap)
         .batching(|it| {
